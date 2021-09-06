@@ -1,0 +1,96 @@
+body {
+    background: #f6f6f3;
+}
+
+button {
+    background:linear-gradient(to bottom, #FFFFFF, #E6E6E6) #F5F5F5 repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #B3B3B3;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    text-decoration:none;
+    display:block;
+    font-size: 14px;
+    width:120px;
+    line-height: 20px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+button:active {
+    transform:translateY(1px);
+    box-shadow: 0 1px 1px 0.1px rgb(56, 54, 54);
+}
+
+.header {
+    margin-bottom: 100px;
+}
+
+.main_form {
+    box-sizing: content-box;
+    border: 1px solid silver;
+    background-color: white;
+    padding: 60px 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.form_block {
+    height: 50px;
+    width: 255px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main_form div:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+.form_label {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.form_button {
+    width: 120px;
+    height: 50px;
+}
+
+#change_image {
+    height: 100px;
+    width: 100px;
+    background-color: transparent;
+    border-radius: 15px;
+    border: 3px solid ghostwhite;
+    margin-right: 35px;
+}
+
+#description {
+    height: 110%;
+}
+
+.footer {
+    padding: 100px 0;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+}
+
+.footer_rights {
+    margin-bottom: 30px;
+}
+
+.footer_padding {
+    margin-left: 25px;
+}

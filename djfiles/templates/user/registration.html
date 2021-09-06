@@ -1,0 +1,70 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'styles/normalise.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/register.css' %}">
+    <script src="{% static 'scripts/register.js' %}"></script>
+    <title>Регестрация</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header_editional-info">
+            <span class="editional-info_time-info"></span>
+            <ul class="editional-info_header-nav">
+                <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+            </ul>
+        </div>
+        <div class="header_logo">
+            <div class="header_logo">
+                <img src="{% static 'images/front-images/logotip.png' %}" class="header_logo-image">
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <form class="main_form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form_block">
+                <input name="profile_photo" id="profile_photo" type="file" hidden>
+                <img id="change_image" hidden>
+                <button id="upload-btn">Загрузить файл</button>
+            </div>
+            <div class="form_block">
+                <label class="form_label" for="username">Ник</label>
+                <input placeholder="Введите уникальный псевдоним" id="username" name="username" minlength="3" maxlength="50" type="text" required>
+            </div>
+            <div class="form_block">
+                <label class="form_label" for="first_name">Имя</label>
+                <input placeholder="Введите ваше имя" id="first_name" name="first_name" minlength="3" maxlength="50" type="text" required>
+            </div>
+            <div class="form_block">
+                <label class="form_label" for="last_name">Фамилия</label>
+                <input placeholder="Введите вашу фамилию" id="last_name" name="last_name" minlength="3" maxlength="50" type="text">
+            </div>
+            <div class="form_block">
+                <label class="form_label" for="password">Пароль</label>
+                <input placeholder="Введите надежный пароль" id="password" type="password" name="password" minlength="10" maxlength="50" required>
+            </div>
+            <div class="form_block">
+                <label class="form_label" for="description">Описание</label>
+                <input placeholder="Опишите себя" id="description" name="description">
+            </div>        
+            <button class="form_button" type="submit">Отправить</button>
+        </form>
+    </main>
+    <footer class="footer">
+        <p class="footer_rights">
+            <b class="footer_padding">&copy;</b> Instacram 2021 - любые совпадения с соц. сетью Instagram либо случайны,
+            либо не имеют смысла. OOO Instacram самостоятельная и независимая яаксноипш организация
+            никак не преследующая цель погубить мировое влияние СМИ на неокрепшие умы.
+        </p>
+        <q class="footer_quotes">Написано по методологии БЭМ</q>
+    </footer>
+</body>
+</html>

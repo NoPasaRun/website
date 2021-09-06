@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/normalise.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <script src="{% static 'scripts/index.js' %}"></script>
+    <title>Instacram || Главная</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header_container">
+            <div class="header_intro-block">
+                <div class="header_editional-info">
+                    <span class="editional-info_time-info"></span>
+                    <ul class="editional-info_header-nav">
+                        <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                        <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                        <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                    </ul>
+                </div>
+                <div class="header_logo">
+                    <div class="header_logo">
+                        <img src="{% static 'images/front-images/logotip.png' %}" class="header_logo-image">
+                    </div>
+                    <div class="header_redirect">
+                        {% if request.user.is_authenticated %}
+                            <a class="redirect_link" href="user/logout">Выход</a>
+                        {% else %}
+                            <a class="redirect_link" href="user/login">Вход</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="header_profiles">
+                <ul class="profiles_profile-list">
+                    {% for profile in profiles %}
+                        <li class="profile-list_item">
+                            <a href="/user/profile/{{profile.id}}" class="profile-list_link">
+                                <img class="profile-list_img" src="media/{{profile.profile_photo}}">
+                            </a>
+                            <span class="profile-list_name"><strong>{{profile.user}}</strong></span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="add_section">
+            <div class="main_container">
+                {% for add in adds %}
+                    <div class="add_top-block">
+                        <div class="add_info">
+                            <div class="author_info">
+                                <img src="media/{{add.creator.profile_photo}}" class="author_image">
+                                <strong class="author_nick">{{add.creator.user}}</strong>
+                            </div>
+                            <a href="add/content/{{add.id}}" class="info_more-about"></a>
+                        </div>
+                        <div class="add_images">
+                            {% for img in add.images.all|slice:":4" %}
+                                <div class="add_content-image" style="background-image:url('media/{{img.image}}')"></div>
+                            {% endfor %}
+                        </div>
+                        <div class="add_comments">
+                            <div class="comments-consists-of">
+                                {% for comment in add.comments.all %}
+                                    <img class="add_avatar-comment" src="media/{{comment.writer.profile_photo}}"> 
+                                    <strong class="add_author-comment">{{comment.writer}}</strong>
+                                    <div class="add_content-comment">{{comment.text}}</div>
+                                {% endfor %}
+                            </div>
+                            <form class="main_form" method="POST">
+                                {% csrf_token %}
+                                <input name="article" value="{{add.id}}" hidden>
+                                {% if request.user.is_authenticated %}
+                                    <img src="media/{{request.user.profile.profile_photo}}" class="author_image author_image-change">
+                                {% endif %}
+                                <input name="text" class="form_text" type="text" placeholder="Добавить комментарий..." minlength="5" maxlength="100">
+                                <button class="form_button" type="submit">🚀</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer_container">
+            <ul class="footer_nav">
+                <li class="footer_item"><a href="/" class="footer_link"></a></li>
+                <li class="footer_item"><a href="/create" class="footer_link"></a></li>
+                <li class="footer_item">
+                    {% if request.user.is_authenticated %}
+                        <a href="/user/profile/{{request.user.profile.id}}" class="footer_link">
+                            <img src="media/{{request.user.profile.profile_photo}}" class="author_image author_image-change-size">
+                        </a>
+                    {% else %}
+                        <a href="/user/login" class="footer_link">
+                            <div style="background: linear-gradient(to right top, coral, pink);" class="author_image author_image-change-size"></div>
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+            <hr class="footer_line">
+        </div>
+    </footer>
+</body>
+</html>

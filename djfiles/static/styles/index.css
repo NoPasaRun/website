@@ -1,0 +1,237 @@
+.redirect_link {
+    color: #e74c3c;
+    position: relative;
+    font-size: 25px;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+    transition: all .3s linear;
+}
+  
+.redirect_link:hover {
+    color: #222;
+}
+
+.redirect_link:before, .redirect_link:after {
+    content: "";
+    background: #e74c3c;
+    position: absolute;
+    width: 0;
+    height: 2px;
+    transition: all .3s linear;
+}
+  
+.redirect_link:before {
+    top: 0;
+    left: 0;
+}
+  
+.redirect_link:after{
+    top: 100%;
+    right: 0;
+}
+
+.redirect_link:hover:before, .redirect_link:hover:after {
+    width: 100%;
+}
+
+.profiles_profile-list {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: center;
+}
+
+.profile-list_item {
+    width: 148px;
+    margin-right: 26px;
+    text-align: center;
+}
+
+.profile-list_item:last-child {
+    margin: 0;
+}
+
+.profile-list_link {
+    display: block;
+    width: 148px;
+    height: 148px;
+    margin-bottom: 18px;
+    border: double 5px transparent;
+    border-radius: 80px;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top right, #D32267, #F7B45A);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.profile-list_img {
+    display: block;
+    position: relative;
+    width: 128px;
+    height: 128px;
+    margin: auto auto;
+    border-radius: inherit;
+    top: 5px;
+}
+
+.profile-list_name {
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 14px;
+    letter-spacing: 0.015em;
+}
+
+.main_container {
+    width: 828px;
+    height: 1214px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.add_info {
+    display: flex;
+    height: 109px;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #DBDBDB;
+}
+
+.author_info {
+    display:flex;
+    height: 76px;
+    align-items: center;
+}
+
+.author_image {
+    width: 74px;
+    height: 74px;
+    border: double 5px transparent;
+    border-radius: 80px;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top right, #D32267, #F7B45A);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.author_nick {
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0.015em;   
+    margin-left: 15px;
+}
+
+.info_more-about {
+    margin-right: 30px;
+    background: url('../images/icons/dots.svg');
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 6px;
+}
+
+.add_images {
+    display: flex;
+    width: 828px;
+    height: 828px;
+    z-index: 1;
+    flex-flow: wrap;
+    margin-bottom: 100px;
+}
+
+.add_content-image {
+    position: relative;
+    display: inline-block;
+    width: calc(100% / 2);
+    height: calc(100% / 2);
+    background-size: 100% 100%;
+}
+
+.add_images div:first-child::before {
+    content: "";
+    position: absolute;
+    width: 816px;
+    height: 828px;
+    top: 5px;
+    background-image: inherit;
+    background-size: 100% 100%;
+    background-position: left center;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.7;
+}
+
+.add_comments {
+    margin-bottom: 40px;
+}
+
+.comments-consists-of {
+    margin-bottom: 25px;
+}
+
+.comments-consists-of div:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.add_content-comment,
+.add_author-comment {
+    flex-direction: column;
+    font-family: 'Roboto';
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: 0.015em; 
+
+}
+
+.add_avatar-comment {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.add_author-comment {
+    display: inline-block;
+    font-weight: 700;
+    transform: translateY(-7px);
+}
+
+.add_content-comment {
+    display: block;
+    word-wrap: break-word;
+}
+
+.form_text {
+    border: none;
+    outline: none;
+    font-family: 'Roboto';
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0.01em; 
+    width: auto;
+    height: auto;  
+}
+
+.author_image-change {
+    position: relative;
+    transform: translateY(15px);
+    width: 3em;
+    height: 3em;
+    border: none;
+    margin-right: 16px;
+}
+
+.form_button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    height: none;
+    width: 50px;
+    height: 50px;   
+}

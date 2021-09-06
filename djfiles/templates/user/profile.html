@@ -1,0 +1,82 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'styles/normalise.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <script src="{% static 'scripts/index.js' %}"></script>
+    <title>
+        {% if request.user == profile.user %}
+            Ваш профиль
+        {% else %}
+            Профиль {{profile.user.username}}
+        {% endif %}
+    </title>
+</head>
+<body>
+    <header class="header">
+        <div class="header_intro-block">
+            <div class="header_editional-info">
+                <span class="editional-info_time-info"></span>
+                <ul class="editional-info_header-nav">
+                    <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                    <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                    <li class="header-nav_svg"><span class="header-nav_svg-content"></span></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="main_section">
+            <div class="section_brief-info">
+                <strong class="brief-info_username">{{profile.user.first_name}} {{profile.user.last_name}}</strong>
+            </div>
+            <div class="section_more-info">
+                <span class="info_image-container">
+                    <img class="info_image" src="../../media/{{profile.profile_photo}}">
+                </span>
+                <ul class="info_nav">
+                    <li class="info_item">Публикации</li>
+                    <li class="info_item">Подписчики</li>
+                    <li class="info_item">Подписки</li>
+                </ul>
+            </div>
+            {% if request.user == profile.user %}
+                <form class="user_form" method="post">
+                    {% csrf_token %}
+                    <input minlength="3" maxlength="100" placeholder="Поменяйте имя..." class="user_input" name="first_name" type="text" required>
+                    <input minlength="3" maxlength="100" placeholder="Поменяйте фамилию..." class="user_input" name="last_name" type="text" required>
+                    <button class="user_button" type="submit">🚀</button>
+                </form>
+            {% endif %}
+            <ul class="section_contact-nav">
+                <li class="contact-nav_item"><a class="contact-nav_button">Подписаться</a></li>
+                <li class="contact-nav_item"><a class="contact-nav_button">Написать</a></li>
+                <li class="contact-nav_item"><a class="contact-nav_button">Эл. письмо</a></li>
+            </ul>
+            <div class="main_container">
+                {% for add in profile.adds.all %}
+                    {% for image in add.images.all %}
+                        <img class="user_photos" height="200px" src="../../media/{{image.image}}">
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer_container">
+            <ul class="footer_nav">
+                <li class="footer_item"><a href="/" class="footer_link"></a></li>
+                <li class="footer_item"><a href="/create" class="footer_link"></a></li>
+                <li class="footer_item"><a href="/user/profile/{{profile.id}}" class="footer_link"><img src="../../media/{{profile.profile_photo}}" class="author_image author_image-change-size"></a></li>
+            </ul>
+            <hr class="footer_line">
+        </div>
+    </footer>
+</body>
+</html>

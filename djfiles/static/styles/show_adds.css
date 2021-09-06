@@ -1,0 +1,87 @@
+body {
+    background-color: black;
+}
+
+.editional-info_time-info {
+    color: white;
+}
+
+.main {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.main_section {
+    position: relative;
+    height: 500px;
+    width: 500px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.section_images {
+    position: absolute;
+    display: flex;
+    flex-flow: nowrap;
+    width: 1500px;
+    height: 100%;
+}
+
+.section_image-add {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+#left_scroller, #right_scroller {
+    top: 50%;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#left_scroller {
+    position: absolute;
+    left: calc(50% - 280px);
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(45deg);
+}
+
+#right_scroller {
+    position: absolute;
+    right: calc(50% - 280px);
+    border-top: 3px solid white;
+    border-right: 3px solid white;
+    transform: rotate(45deg);
+}
+
+.add_title {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    font-size: 30px;
+    color: tomato;
+    transform: rotate(-45deg);
+    text-shadow: 1px 1px 1px white;
+    filter: brightness(200%);
+}
+
+.add_description {
+    padding: 50px 0;
+    font-size: 30px;
+    color: tomato;
+    text-shadow: 1px 1px 1px white;
+    filter: brightness(110%);
+    text-align: center;
+}
